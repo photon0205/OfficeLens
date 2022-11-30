@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:officelens/homepage.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -57,26 +58,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("PDF Maker"),
-          actions: [
-            IconButton(
-              onPressed: getImage,
-              icon: Icon(Icons.image),
-            ),
-            IconButton(
-              onPressed: getImagecam,
-              icon: Icon(Icons.camera),
-            ),
-          ],
-        ),
-        body: file == null
-            ? Container()
-            : PdfPreview(
-          build: (format) => _generatePdf(format, file),
-        ),
-      ),
+      home: HomePage()
     );
   }
 }
