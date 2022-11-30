@@ -18,7 +18,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   File? file;
   ImagePicker image = ImagePicker();
-
   getImage() async {
     var img = await image.pickImage(source: ImageSource.gallery);
 
@@ -42,10 +41,12 @@ class _MyAppState extends State<MyApp> {
     final showimage = pw.MemoryImage(file.readAsBytesSync());
 
     pdf.addPage(
-      pw.MultiPage(
+      pw.Page(
         pageFormat: format,
         build: (context) {
-          return pw.Image(showimage, fit: pw.BoxFit.contain);
+          return pw.Center(
+            child: pw.Image(showimage, fit: pw.BoxFit.contain),
+          );
         },
       ),
     );
